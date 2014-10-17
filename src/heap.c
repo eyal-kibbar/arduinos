@@ -9,8 +9,7 @@ static void heap_swap(struct heap_t* heap, int i, int j)
 	heap->arr[j] = tmp;
 }
 
-int heap_init(struct heap_t* heap,
-	int (*compare)(void*, void*))
+int heap_init(struct heap_t* heap, compare_func compare)
 {
 	heap->size = 0;
 	heap->compare = compare;

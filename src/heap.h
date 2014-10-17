@@ -6,14 +6,16 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef int (*compare_func)(void*, void*);
+
 struct heap_t {
 	int size;
-	int (*compare)(void* a, void* b);
+	compare_func compare;
 	void* arr[HEAP_MAX_SIZE];
 };
 
-int heap_init(struct heap_t* heap,
-	int (*compare)(void*, void*));
+int heap_init(struct heap_t* heap, compare_func compare);
 int heap_peek(struct heap_t* heap, void** elmt);
 int heap_push(struct heap_t* heap, void* elmt);
 int heap_pop(struct heap_t* heap);
